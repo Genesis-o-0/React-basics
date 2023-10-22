@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
+// App Component
 function App() {
+  const name = "Mohamed";
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <User />
     </div>
   );
 }
+
+// User Component
+const User = () => {
+  return (
+    <div>
+      <h1>Mohamed</h1>
+      <h1>27</h1>
+      <h1>example@example.com</h1>
+    </div>
+  );
+};
 
 export default App;
