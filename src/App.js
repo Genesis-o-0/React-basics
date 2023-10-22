@@ -1,17 +1,14 @@
 import "./App.css";
 
-// App Component
 function App() {
-  // Conditional rendering
-  const age = 18;
-  const isGreen = true;
+  // Working with Lists
+  const names = ["Jack", "Jessica", "Mike", "Dustin"];
 
   return (
     <div className="App">
-      {/* Using Ternary operator for conditional rendering */}
-      {age >= 18 ? <h1>Over age</h1> : <h1>Under age</h1>}
-      {/* Using Ternary operator for conditional Styling */}
-      <h1 style={{ color: isGreen ? "green" : "red" }}>This has a color</h1>
+      {names.map((name, index) => {
+        return <h1 key={index}>{name}</h1>;
+      })}
     </div>
   );
 }
