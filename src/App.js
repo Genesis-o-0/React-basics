@@ -1,25 +1,29 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-import Axios from "axios";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { Profile } from "./pages/Profile";
+import { Contact } from "./pages/Contact";
+import { Navbar } from "./Navbar";
+import { useState, createContext } from "react";
 
-// Using Axios.js
+// make a global context where all components can share props instead of props drilling
+export const AppContext = createContext();
+
 function App() {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(null);
-  const fetchData = () => {
-    Axios.get(`https://api.agify.io/?name=${name}`).then((res) => {
-      console.log(res);
-      setAge(res.data.age)
-    });
-  };
-  const getInputValue = (e) => {
-    setName(e.target.value);
-  };
+  const [userName, setUserName] = useState("Mohamed");
   return (
     <div className="App">
-      <input type="text" placeholder="Enter a name" onChange={getInputValue} />
-      <button onClick={fetchData}>Predict Age</button>
-      <h1>Predicted age: {age}</h1>
+      <AppContext.Provider value={{ userName, setUserName }}>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/menu" element={<Profile />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<h1> PAGE NOT FOUND</h1>} />
+          </Routes>
+        </Router>
+      </AppContext.Provider>
     </div>
   );
 }
