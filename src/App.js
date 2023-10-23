@@ -1,15 +1,12 @@
 import "./App.css";
-
+import { useState } from "react";
 function App() {
-  // Working without states
-  let age = 0;
-  // this will update the value of age in the console but not in the document
-  // react will render this component once at the beginning where age is equal to 0
-  // but at the same time react has no clue about the "state" of the age which is increasing in the console!
-  // so we need a way to tell react to watch 'current state' of the age variable and update the document based on it
+  // Working with states
+  const [age, setAge] = useState(0);
+  // working with useState Hook to tell react to watch over the age variable and trigger a re-render whenever it is changed
+  // useState is a Hook which returns an array the contains the current state and the set function that lets you update the state to a different value and trigger a re-render.
   const increaseAge = () => {
-    age += 1;
-    console.log(age);
+    setAge(age + 1);
   };
   return (
     <div className="App">
